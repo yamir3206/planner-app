@@ -1,0 +1,277 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Vazirmatn variable font - loaded via @fontsource but keep fallback */
+@layer base {
+  :root {
+    /* Light theme - Axon brand (default) */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --surface: 0 0% 100%;
+    --surface-2: 210 40% 96%;
+    --primary: 239 84% 67%;
+    --primary-hover: 239 84% 62%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 189 94% 43%;
+    --accent-foreground: 0 0% 98%;
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 98%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 239 84% 67%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222 47% 4%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+    --surface: 222 47% 8%;
+    --surface-2: 217 33% 17%;
+    --primary: 239 84% 72%;
+    --primary-hover: 239 84% 67%;
+    --primary-foreground: 222 47% 4%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 189 94% 50%;
+    --accent-foreground: 222 47% 4%;
+    --success: 160 60% 45%;
+    --success-foreground: 210 40% 98%;
+    --warning: 38 92% 55%;
+    --warning-foreground: 222 47% 4%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 239 84% 72%;
+  }
+
+  /* Theme: Forest - سبز آرامش‌بخش */
+  .theme-forest {
+    --primary: 160 84% 39%;
+    --primary-hover: 160 84% 35%;
+    --accent: 142 76% 36%;
+    --ring: 160 84% 39%;
+  }
+  .theme-forest.dark {
+    --primary: 160 60% 45%;
+    --primary-hover: 160 60% 40%;
+    --accent: 142 70% 45%;
+  }
+
+  /* Theme: Ocean - آبی عمیق */
+  .theme-ocean {
+    --primary: 199 89% 48%;
+    --primary-hover: 199 89% 44%;
+    --accent: 189 94% 43%;
+    --ring: 199 89% 48%;
+  }
+  .theme-ocean.dark {
+    --primary: 199 89% 55%;
+    --primary-hover: 199 89% 50%;
+    --accent: 189 94% 50%;
+  }
+
+  /* Theme: Sunset - نارنجی گرم */
+  .theme-sunset {
+    --primary: 38 92% 50%;
+    --primary-hover: 38 92% 45%;
+    --accent: 0 84% 60%;
+    --ring: 38 92% 50%;
+  }
+  .theme-sunset.dark {
+    --primary: 38 92% 55%;
+    --primary-hover: 38 92% 50%;
+    --accent: 0 72% 51%;
+  }
+
+  /* Theme: Lavender - بنفش ملایم */
+  .theme-lavender {
+    --primary: 262 83% 58%;
+    --primary-hover: 262 83% 53%;
+    --accent: 330 81% 60%;
+    --ring: 262 83% 58%;
+  }
+  .theme-lavender.dark {
+    --primary: 262 83% 65%;
+    --primary-hover: 262 83% 60%;
+    --accent: 330 81% 65%;
+  }
+
+  /* Theme: Midnight - تاریک حرفه‌ای */
+  .theme-midnight {
+    --background: 222 47% 4%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 6%;
+    --card-foreground: 210 40% 98%;
+    --primary: 222 47% 20%;
+    --primary-hover: 222 47% 25%;
+    --primary-foreground: 210 40% 98%;
+    --accent: 239 84% 67%;
+    --border: 217 33% 12%;
+    --input: 217 33% 12%;
+  }
+  .theme-midnight.dark {
+    --background: 0 0% 0%;
+    --card: 222 47% 4%;
+    --primary: 239 84% 67%;
+    --primary-foreground: 0 0% 98%;
+  }
+
+  /* Theme: Rose - صورتی انرژی‌بخش */
+  .theme-rose {
+    --primary: 330 81% 60%;
+    --primary-hover: 330 81% 55%;
+    --accent: 350 89% 60%;
+    --ring: 330 81% 60%;
+  }
+  .theme-rose.dark {
+    --primary: 330 81% 65%;
+    --primary-hover: 330 81% 60%;
+    --accent: 350 89% 65%;
+  }
+
+  /* Theme: Emerald - سبز زمردی */
+  .theme-emerald {
+    --primary: 160 84% 30%;
+    --primary-hover: 160 84% 26%;
+    --accent: 160 60% 45%;
+    --ring: 160 84% 30%;
+  }
+  .theme-emerald.dark {
+    --primary: 160 60% 40%;
+    --primary-hover: 160 60% 35%;
+    --accent: 160 60% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply scroll-smooth;
+    font-family: Vazirmatn, system-ui, -apple-system, Tahoma, sans-serif;
+    font-feature-settings: 'ss01' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: Vazirmatn, system-ui, Tahoma, sans-serif;
+    line-height: 1.8;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
+  }
+
+  ::selection {
+    @apply bg-primary/20;
+  }
+}
+
+@layer utilities {
+  .font-vazir {
+    font-family: Vazirmatn, sans-serif;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .bidi-auto {
+    unicode-bidi: plaintext;
+  }
+  .dir-auto {
+    direction: auto;
+  }
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-medium hover:-translate-y-0.5;
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  /* Beautiful gradient backgrounds for themes */
+  .bg-gradient-axon {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  }
+  .bg-gradient-forest {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  }
+  .bg-gradient-ocean {
+    background: linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%);
+  }
+  .bg-gradient-sunset {
+    background: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
+  }
+}
+
+input,
+textarea {
+  unicode-bidi: plaintext;
+  text-align: start;
+}
+input[type='number'] {
+  direction: ltr;
+  text-align: left;
+}
+input[type='number'].persian-number {
+  text-align: right;
+}
+
+.recharts-wrapper {
+  direction: ltr;
+}
+.recharts-wrapper .recharts-cartesian-axis-tick-value {
+  font-family: Vazirmatn, sans-serif;
+}
+
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Play button fix - ensure icon visible */
+.play-button {
+  position: relative;
+  overflow: visible;
+}
+.play-button svg {
+  display: block;
+  flex-shrink: 0;
+}
