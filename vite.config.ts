@@ -36,8 +36,16 @@ export default defineConfig({
     })
   ],
   resolve: { alias: { '@': path.resolve(__dirname, './src') } },
-  server: { host: '0.0.0.0', port: 5173, cors: true },
-  preview: { host: '0.0.0.0', port: 4173 },
+  server: { 
+    host: '0.0.0.0', 
+    port: 5173, 
+    cors: true,
+    hmr: { host: 'localhost' },
+    headers: { 'Access-Control-Allow-Origin': '*' },
+    // @ts-ignore - allow all hosts for Arena preview
+    allowedHosts: true
+  },
+  preview: { host: '0.0.0.0', port: 4173, cors: true },
   test: { globals: true, environment: 'jsdom', setupFiles: ['./src/test/setup.ts'] },
   build: {
     outDir: 'dist',
