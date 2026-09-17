@@ -8,25 +8,12 @@
     <meta name="theme-color" content="#6366F1" />
     <title>آکسون - برنامه‌ریز کنکور</title>
     <style>
-      #root:empty {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        background: #f8f7ff;
-      }
-      #root:empty::after {
-        content: "در حال بارگذاری آکسون...";
-        font-family: Vazirmatn, sans-serif;
-        color: #6366F1;
-        font-weight: bold;
-        animation: pulse 1.5s infinite;
-      }
+      #root:empty { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #f8f7ff; }
+      #root:empty::after { content: "در حال بارگذاری آکسون..."; font-family: Vazirmatn, sans-serif; color: #6366F1; font-weight: bold; animation: pulse 1.5s infinite; }
       @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
       .error-fallback { padding: 20px; margin: 20px; background: white; border: 2px solid red; border-radius: 10px; color: #333; font-family: sans-serif; }
     </style>
     <script>
-      // Early error capture
       window.__axon_errors = [];
       window.addEventListener('error', function(e) {
         console.error('Global error:', e.error || e.message);
@@ -40,7 +27,6 @@
         console.error('Unhandled rejection:', e.reason);
         window.__axon_errors.push({message: 'Promise: ' + (e.reason?.message || e.reason)});
       });
-      // Theme with extra safety
       try {
         var c = localStorage.getItem('axon_theme_color') || 'axon';
         var m = localStorage.getItem('axon_theme_mode') || 'system';
@@ -51,20 +37,11 @@
         }
       } catch(e) { console.warn('Theme error', e); }
     </script>
-    <script type="module" crossorigin src="/planner-app/assets/index-Bpbxqda8.js"></script>
-    <link rel="modulepreload" crossorigin href="/planner-app/assets/vendor-DTWfLB8d.js">
-    <link rel="modulepreload" crossorigin href="/planner-app/assets/react-BS69gH8m.js">
-    <link rel="modulepreload" crossorigin href="/planner-app/assets/db--6d6FdAe.js">
-    <link rel="modulepreload" crossorigin href="/planner-app/assets/charts-DkbyFx-i.js">
-    <link rel="stylesheet" crossorigin href="/planner-app/assets/vendor-XUKreyHM.css">
-    <link rel="stylesheet" crossorigin href="/planner-app/assets/index-BVs4rynl.css">
-  <link rel="manifest" href="/planner-app/manifest.webmanifest"></head>
+    <script type="module" crossorigin src="/planner-app/assets/index-CG-GosnJ.js"></script>
+    <link rel="stylesheet" crossorigin href="/planner-app/assets/index-BCOUZv52.css">
+  </head>
   <body>
     <div id="root"></div>
-    <noscript>
-      <div style="padding:20px;text-align:center;font-family:sans-serif">
-        برای استفاده از آکسون، جاوااسکریپت را فعال کنید
-      </div>
-    </noscript>
+    <noscript><div style="padding:20px;text-align:center;font-family:sans-serif">برای استفاده از آکسون، جاوااسکریپت را فعال کنید</div></noscript>
   </body>
 </html>
