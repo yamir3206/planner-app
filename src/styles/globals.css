@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* پایه - متغیرهای اصلی */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --surface: 0 0% 100%;
+    --surface-2: 210 40% 96%;
+    --primary: 239 84% 67%;
+    --primary-hover: 239 84% 62%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 189 94% 43%;
+    --accent-foreground: 0 0% 98%;
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 98%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 239 84% 67%;
+    --radius: 0.75rem;
+    --theme-bg-tint: 239 100% 98%;
+  }
+
+  .dark {
+    --background: 222 47% 4%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+    --surface: 222 47% 8%;
+    --surface-2: 217 33% 17%;
+    --primary: 239 84% 72%;
+    --primary-hover: 239 84% 67%;
+    --primary-foreground: 222 47% 4%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 189 94% 50%;
+    --accent-foreground: 222 47% 4%;
+    --success: 160 60% 45%;
+    --success-foreground: 210 40% 98%;
+    --warning: 38 92% 55%;
+    --warning-foreground: 222 47% 4%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 239 84% 72%;
+  }
+
+  * { @apply border-border; }
+  html {
+    @apply scroll-smooth;
+    font-family: Vazirmatn, system-ui, -apple-system, Tahoma, sans-serif;
+    font-feature-settings: 'ss01' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: Vazirmatn, system-ui, Tahoma, sans-serif;
+    line-height: 1.8;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background: hsl(var(--background));
+  }
+  :focus-visible { @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-border rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-muted-foreground/30; }
+  ::selection { @apply bg-primary/20; }
+}
+
+/* تم‌ها - بیرون از @layer تا اولویت بالاتر داشته باشند و حتماً اعمال شوند */
+html.theme-axon { --primary: 239 84% 67%; --primary-hover: 239 84% 62%; --accent: 189 94% 43%; --ring: 239 84% 67%; --theme-bg-tint: 239 100% 98%; --background: 239 50% 99%; }
+html.theme-axon.dark { --primary: 239 84% 72%; --primary-hover: 239 84% 67%; --accent: 189 94% 50%; --background: 239 30% 6%; --card: 239 25% 9%; }
+
+html.theme-forest { --primary: 142 76% 36%; --primary-hover: 142 76% 32%; --accent: 142 70% 45%; --ring: 142 76% 36%; --background: 142 30% 98%; --card: 0 0% 100%; }
+html.theme-forest.dark { --primary: 142 70% 45%; --accent: 142 60% 50%; --background: 142 30% 6%; --card: 142 25% 9%; }
+
+html.theme-ocean { --primary: 199 89% 48%; --primary-hover: 199 89% 44%; --accent: 201 96% 32%; --ring: 199 89% 48%; --background: 199 50% 98%; }
+html.theme-ocean.dark { --primary: 199 89% 55%; --accent: 199 80% 60%; --background: 199 40% 6%; --card: 199 35% 9%; }
+
+html.theme-sunset { --primary: 25 95% 53%; --primary-hover: 25 95% 48%; --accent: 38 92% 50%; --ring: 25 95% 53%; --background: 25 60% 98%; }
+html.theme-sunset.dark { --primary: 25 90% 60%; --accent: 38 92% 55%; --background: 25 30% 6%; --card: 25 25% 9%; }
+
+html.theme-lavender { --primary: 262 83% 58%; --primary-hover: 262 83% 53%; --accent: 270 80% 65%; --ring: 262 83% 58%; --background: 262 40% 98%; }
+html.theme-lavender.dark { --primary: 262 83% 68%; --accent: 270 75% 70%; --background: 262 30% 7%; --card: 262 25% 10%; }
+
+html.theme-rose { --primary: 330 81% 60%; --primary-hover: 330 81% 55%; --accent: 340 82% 52%; --ring: 330 81% 60%; --background: 330 40% 98%; }
+html.theme-rose.dark { --primary: 330 81% 68%; --accent: 340 75% 60%; --background: 330 30% 7%; --card: 330 25% 10%; }
+
+html.theme-emerald { --primary: 160 84% 39%; --primary-hover: 160 84% 34%; --accent: 160 60% 45%; --ring: 160 84% 39%; --background: 160 30% 98%; }
+html.theme-emerald.dark { --primary: 160 60% 50%; --accent: 160 55% 55%; --background: 160 30% 6%; --card: 160 25% 9%; }
+
+html.theme-midnight { --background: 222 47% 97%; --foreground: 222 47% 11%; --card: 0 0% 100%; --card-foreground: 222 47% 11%; --primary: 222 47% 20%; --primary-hover: 222 47% 15%; --primary-foreground: 0 0% 98%; --accent: 222 47% 30%; --border: 214 32% 90%; }
+html.theme-midnight.dark { --background: 222 47% 4%; --foreground: 210 40% 98%; --card: 222 47% 7%; --card-foreground: 210 40% 98%; --primary: 210 40% 98%; --primary-foreground: 222 47% 4%; --accent: 217 32% 65%; --border: 217 33% 15%; }
+
+html.theme-crimson { --primary: 0 84% 60%; --primary-hover: 0 84% 55%; --accent: 0 72% 51%; --ring: 0 84% 60%; --background: 0 50% 98%; }
+html.theme-crimson.dark { --primary: 0 72% 60%; --accent: 0 65% 55%; --background: 0 30% 7%; --card: 0 25% 10%; }
+
+html.theme-teal { --primary: 173 80% 40%; --primary-hover: 173 80% 35%; --accent: 173 70% 30%; --ring: 173 80% 40%; --background: 173 30% 98%; }
+html.theme-teal.dark { --primary: 173 60% 50%; --accent: 173 50% 60%; --background: 173 30% 6%; --card: 173 25% 9%; }
+
+html.theme-amber { --primary: 38 92% 50%; --primary-hover: 38 92% 45%; --accent: 48 96% 53%; --ring: 38 92% 50%; --background: 38 60% 98%; }
+html.theme-amber.dark { --primary: 38 92% 60%; --accent: 48 90% 60%; --background: 38 30% 7%; --card: 38 25% 10%; }
+
+html.theme-violet { --primary: 263 70% 50%; --primary-hover: 263 70% 45%; --accent: 263 60% 60%; --ring: 263 70% 50%; --background: 263 40% 98%; }
+html.theme-violet.dark { --primary: 263 70% 65%; --accent: 263 60% 70%; --background: 263 30% 7%; --card: 263 25% 10%; }
+
+html.theme-cyan { --primary: 189 94% 43%; --primary-hover: 189 94% 38%; --accent: 199 89% 48%; --ring: 189 94% 43%; --background: 189 40% 98%; }
+html.theme-cyan.dark { --primary: 189 80% 55%; --accent: 199 80% 60%; --background: 189 30% 7%; --card: 189 25% 10%; }
+
+html.theme-lime { --primary: 82 85% 40%; --primary-hover: 82 85% 35%; --accent: 82 70% 30%; --ring: 82 85% 40%; --background: 82 30% 98%; }
+html.theme-lime.dark { --primary: 82 70% 50%; --accent: 82 60% 60%; --background: 82 30% 7%; --card: 82 25% 10%; }
+
+html.theme-pink { --primary: 340 82% 52%; --primary-hover: 340 82% 47%; --accent: 330 81% 60%; --ring: 340 82% 52%; --background: 340 40% 98%; }
+html.theme-pink.dark { --primary: 340 75% 60%; --accent: 330 75% 65%; --background: 340 30% 7%; --card: 340 25% 10%; }
+
+html.theme-indigo { --primary: 239 84% 67%; --primary-hover: 239 84% 62%; --accent: 239 70% 60%; --ring: 239 84% 67%; --background: 239 40% 98%; }
+html.theme-indigo.dark { --primary: 239 80% 75%; --accent: 239 70% 70%; --background: 239 30% 7%; --card: 239 25% 10%; }
+
+html.theme-slate { --primary: 215 20% 35%; --primary-hover: 215 20% 30%; --accent: 215 15% 45%; --ring: 215 20% 35%; --background: 215 20% 98%; }
+html.theme-slate.dark { --primary: 215 15% 65%; --accent: 215 10% 55%; --background: 215 20% 6%; --card: 215 15% 9%; }
+
+html.theme-obsidian { --background: 0 0% 98%; --foreground: 222 47% 11%; --card: 0 0% 100%; --card-foreground: 222 47% 11%; --primary: 0 0% 9%; --primary-hover: 0 0% 5%; --primary-foreground: 0 0% 98%; --accent: 0 0% 20%; --border: 0 0% 90%; }
+html.theme-obsidian.dark { --background: 0 0% 3%; --foreground: 0 0% 95%; --card: 0 0% 6%; --card-foreground: 0 0% 95%; --primary: 0 0% 95%; --primary-foreground: 0 0% 9%; --accent: 0 0% 80%; --border: 0 0% 12%; }
+
+html.theme-aurora { --primary: 262 83% 58%; --primary-hover: 262 83% 53%; --accent: 189 94% 43%; --ring: 262 83% 58%; --background: 262 50% 98%; }
+html.theme-aurora.dark { --primary: 262 80% 68%; --accent: 189 80% 60%; --background: 262 30% 7%; --card: 262 25% 10%; }
+
+html.theme-sakura { --primary: 330 81% 60%; --primary-hover: 330 81% 55%; --accent: 340 75% 75%; --ring: 330 81% 60%; --background: 330 50% 98%; }
+html.theme-sakura.dark { --primary: 330 75% 70%; --accent: 340 65% 75%; --background: 330 30% 8%; --card: 330 25% 11%; }
+
+@layer utilities {
+  .font-vazir { font-family: Vazirmatn, sans-serif; }
+  .text-balance { text-wrap: balance; }
+  .bidi-auto { unicode-bidi: plaintext; }
+  .dir-auto { direction: auto; }
+  .touch-target { @apply min-h-[44px] min-w-[44px]; }
+  .card-hover { @apply transition-all duration-200 hover:shadow-medium hover:-translate-y-0.5; }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+  .safe-top { padding-top: env(safe-area-inset-top); }
+  .text-readable { color: hsl(var(--foreground)); text-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+  .card-readable { background: hsl(var(--card)); color: hsl(var(--card-foreground)); border: 1px solid hsl(var(--border)); }
+  .primary-readable { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+  .bg-gradient-axon { background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%); }
+  .bg-gradient-forest { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
+  .bg-gradient-ocean { background: linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%); }
+  .bg-gradient-sunset { background: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%); }
+  .bg-gradient-aurora { background: linear-gradient(135deg, #8B5CF6 0%, #06B6D4 50%, #EC4899 100%); }
+  .bg-gradient-sakura { background: linear-gradient(135deg, #F472B6 0%, #F9A8D4 100%); }
+}
+
+input, textarea { unicode-bidi: plaintext; text-align: start; }
+input[type='number'] { direction: ltr; text-align: left; }
+input[type='number'].persian-number { text-align: right; }
+.recharts-wrapper { direction: ltr; }
+.recharts-wrapper .recharts-cartesian-axis-tick-value { font-family: Vazirmatn, sans-serif; }
+.modal-backdrop { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+
+.play-button-large {
+  width: 88px; height: 88px; border-radius: 9999px;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  color: white; border: 4px solid white;
+  box-shadow: 0 10px 30px -10px hsl(var(--primary) / 0.5), 0 4px 10px -4px rgba(0,0,0,0.1);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: visible;
+}
+.play-button-large:hover { transform: scale(1.05); box-shadow: 0 20px 40px -10px hsl(var(--primary) / 0.6), 0 8px 20px -4px rgba(0,0,0,0.15); }
+.play-button-large:active { transform: scale(0.98); }
+.play-button-large svg { width: 36px; height: 36px; fill: white; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2)); margin-left: 2px; }
+.play-button-large.pause { width: 72px; height: 72px; background: hsl(var(--secondary)); color: hsl(var(--secondary-foreground)); border: 2px solid hsl(var(--border)); }
+.play-button-large.pause svg { width: 28px; height: 28px; fill: currentColor; margin-left: 0; }
+
+.card-beautiful {
+  background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--card)) 100%);
+  border: 1px solid hsl(var(--border) / 0.8);
+  box-shadow: 0 4px 12px -4px rgba(0,0,0,0.05), 0 2px 6px -2px rgba(0,0,0,0.03);
+  transition: all 0.3s ease;
+}
+.card-beautiful:hover {
+  box-shadow: 0 12px 24px -8px rgba(0,0,0,0.08), 0 4px 12px -4px rgba(0,0,0,0.05);
+  transform: translateY(-1px); border-color: hsl(var(--border));
+}
+
+.text-high-contrast { color: hsl(var(--foreground)); font-weight: 500; }
+.text-high-contrast-bold { color: hsl(var(--foreground)); font-weight: 700; }
+.bg-high-contrast { background: hsl(var(--card)); color: hsl(var(--card-foreground)); }
+
+/* انیمیشن تغییر تم */
+.theme-transition { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
