@@ -8,37 +8,35 @@ export function PWAUpdatePrompt() {
   const [updateSW, setUpdateSW] = React.useState<(() => Promise<void>) | null>(null)
 
   React.useEffect(() => {
-    // vite-plugin-pwa virtual module - only in production
-    import('virtual:pwa-register/react')
-      .then(({ useRegisterSW }) => {
-        const {
-          needRefresh: [needRefreshValue],
-          offlineReady: [offlineReadyValue],
-          updateServiceWorker
-        } = useRegisterSW({
-          onRegistered(r: any) {
-            console.log('SW Registered', r)
-          },
-          onRegisterError(error: any) {
-            console.log('SW registration error', error)
+    // Only try to load PWA if available
+    if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+      import('virtual:pwa-register/react')
+        .then(({ useRegisterSW }) => {
+          try {
+            const result = useRegisterSW({
+              onRegistered(r: any) { console.log('SW Registered', r) },
+              onRegisterError(error: any) { console.log('SW registration error', error) }
+            })
+            // Handle the reactive values properly
+            if (result) {
+              const { needRefresh: needRefreshRef, offlineReady: offlineReadyRef, updateServiceWorker } = result as any
+              // Poll for changes
+              const interval = setInterval(() => {
+                try {
+                  if (needRefreshRef?.[0]) setNeedRefresh(true)
+                  if (offlineReadyRef?.[0]) setOfflineReady(true)
+                } catch {}
+              }, 2000)
+              setUpdateSW(() => updateServiceWorker)
+              return () => clearInterval(interval)
+            }
+          } catch (e) {
+            console.log('PWA setup error', e)
           }
+        }).catch(() => {
+          // PWA not available
         })
-
-      // We need to watch these values - but useRegisterSW returns refs, we need to poll or use effect
-      // Simpler: use interval to check
-      const interval = setInterval(() => {
-        // @ts-ignore
-        if (needRefreshValue) setNeedRefresh(true)
-        // @ts-ignore
-        if (offlineReadyValue) setOfflineReady(true)
-      }, 1000)
-
-      setUpdateSW(() => updateServiceWorker)
-
-      return () => clearInterval(interval)
-    }).catch(() => {
-      // PWA not available in dev
-    })
+    }
   }, [])
 
   if (!needRefresh && !offlineReady) return null
