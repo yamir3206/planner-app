@@ -51,19 +51,6 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: false,
     chunkSizeWarningLimit: 1000,
-    minify: 'esbuild',
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-router')) return 'react'
-            if (id.includes('recharts')) return 'charts'
-            if (id.includes('lucide-react')) return 'icons'
-            if (id.includes('idb') || id.includes('zustand')) return 'db'
-            return 'vendor'
-          }
-        }
-      }
-    }
+    minify: 'esbuild'
   }
 })
